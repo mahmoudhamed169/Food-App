@@ -1,0 +1,44 @@
+.Auth-container {
+    background-image: url(assets/images/auth-bg.png);
+    background-size: cover;
+    font-family: "Montserrat", sans-serif;
+}
+
+.bg-overlay {
+    background: linear-gradient(to left,
+            rgba(0, 0, 0, 0.4),
+            rgba(47, 140, 51, 0.7));
+}
+
+
+
+input,
+select {
+    background-color: #F7F7F7 !important;
+    height: 45px;
+    border: 0 !important;
+
+}
+
+.form-control:focus {
+    border-color: #00ffdd !important;
+    outline: none;
+
+}
+
+.input-group span i {
+    padding-right: 15px;
+    border-right: 2px solid;
+
+    border-image-source: linear-gradient(0deg, #8391A1, #8391A1),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+
+
+}
+
+.form-control:focus {
+    outline: none !important;
+    outline: none !important;
+    border: 1px solid green !important;
+    box-shadow: 0 0 10px green !important;
+}
