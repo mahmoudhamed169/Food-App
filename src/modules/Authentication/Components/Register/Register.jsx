@@ -33,10 +33,16 @@ export default function Register() {
 
 
     const {
-        register, //btsheel el values ui inputs
-        handleSubmit, //integration
-        formState: { errors }, //errors
+        register,
+        handleSubmit,
+        formState: { errors },
+        setFocus,
     } = useForm();
+
+    useEffect(() => {
+        // inputEl.current.focus()
+        setFocus("userName")
+    }, []);
 
     let navigate = useNavigate();
     const togglePasswordVisibility = () => {

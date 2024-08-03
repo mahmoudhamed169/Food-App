@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners';
@@ -14,7 +14,13 @@ export default function ResetPass() {
         register, //btsheel el values ui inputs
         handleSubmit, //integration
         formState: { errors }, //errors
+        setFocus,
     } = useForm();
+
+    useEffect(() => {
+        // inputEl.current.focus()
+        setFocus("email")
+    }, []);
 
     let navigate = useNavigate();
     const togglePasswordVisibility = () => {

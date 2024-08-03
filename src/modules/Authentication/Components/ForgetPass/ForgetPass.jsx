@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ForgetPass() {
     const [loading, setLoading] = useState(false);
@@ -12,7 +12,14 @@ export default function ForgetPass() {
         register, //btsheel el values ui inputs
         handleSubmit, //integration
         formState: { errors }, //errors
+        setFocus,
     } = useForm();
+
+    useEffect(() => {
+        // inputEl.current.focus()
+        setFocus("email")
+    }, []);
+
 
 
     let navigate = useNavigate();

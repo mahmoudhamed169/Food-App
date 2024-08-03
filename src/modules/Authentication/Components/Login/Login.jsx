@@ -1,20 +1,31 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
 
+
 export default function Login({ saveLoginData }) {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+    const inputEl = useRef("")
+
+
+
 
     let navigate = useNavigate();
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setFocus,
     } = useForm();
+
+    useEffect(() => {
+        // inputEl.current.focus()
+        setFocus("email")
+    }, []);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -59,6 +70,7 @@ export default function Login({ saveLoginData }) {
                                 placeholder="Enter your E-mail"
                                 aria-label="Email"
                                 aria-describedby="basic-addon1"
+                                ref={inputEl}
                                 {...register("email", {
                                     required: "email is required",
                                     pattern: {
