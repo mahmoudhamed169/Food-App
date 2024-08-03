@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import AuthLayout from './modules/Shared/Components/AuthLayout/AuthLayout';
@@ -13,15 +13,26 @@ import CategoriesList from './modules/Categories/Components/CategoriesList/Categ
 import UsersList from './modules/Users/Components/UsersList/UsersList';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { jwtDecode } from 'jwt-decode';
+import ProtectedRoute from './modules/Shared/Components/ProtectedRoute/ProtectedRoute';
 
 const App = () => {
+
+  const [loginData, setLoginData] = useState(null);
+
+  const saveLoginData = () => {
+    let encodedToken = localStorage.getItem("token");
+    let decodedToken = jwtDecode(encodedToken);
+    // console.log(decodedToken);
+    setLoginData(decodedToken);
+  };
   const routes = createBrowserRouter([
     {
       path: "",
       element: <AuthLayout />,
       children: [
-        { index: true, element: <Login /> },
-        { path: "login", element: <Login /> },
+        { index: true, element: <Login saveLoginData={saveLoginData} /> },
+        { path: "login", element: <Login saveLoginData={saveLoginData} /> },
         { path: "register", element: <Register /> },
         { path: "resetPass", element: <ResetPass /> },
         { path: "forgetPass", element: <ForgetPass /> }
@@ -29,7 +40,9 @@ const App = () => {
     },
     {
       path: "dashboard",
-      element: <MasterLayout />,
+      element: <ProtectedRoute loginData={loginData} >
+        <MasterLayout loginData={loginData} />
+      </ProtectedRoute>,
       children: [
         { index: true, element: <Home /> },
         { path: "home", element: <Home /> },

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import logo from "../../../../assets/images/4.png"
 import { useLoading } from './../../../../Context/LoadingContext';
 import Spinner from './../Spinner/Spinner';
 
 export default function AuthLayout() {
-    const { isLoading, setIsLoading } = useLoading()
+    const { isLoading, setIsLoading, setIsAuthLayout } = useLoading()
     const location = useLocation();
     const colClass = location.pathname === '/register' ? 'col-md-8' : 'col-md-6';
 
@@ -18,6 +18,10 @@ export default function AuthLayout() {
 
         return () => clearTimeout(timer);
     }, [location.pathname, setIsLoading]);
+
+    useEffect(() => {
+        setIsAuthLayout(true);
+    }, [setIsAuthLayout]);
 
     return (
         <div>

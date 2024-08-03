@@ -1,43 +1,45 @@
 
-import { Outlet, useLocation } from 'react-router-dom'
-import NavBar from '../NavBar/NavBar'
-import SideBar from '../SideBar/SideBar'
-import { useLoading } from './../../../../Context/LoadingContext';
-import Spinner from './../Spinner/Spinner';
-import { useEffect } from 'react';
+import SideBar from "./../SideBar/SideBar";
+import { Outlet } from "react-router-dom";
+import styles from './MasterLayout.module.css';
+import NavBar from "../NavBar/NavBar";
+import { useLoading } from "../../../../Context/LoadingContext";
+import { useEffect } from "react";
+import Spinner from "../Spinner/Spinner";
 
-export default function MasterLayout() {
-    const { isLoading, setIsLoading } = useLoading()
-    // const location = useLocation();
+
+export default function MasterLayout({ loginData }) {
+    const { isLoading, setIsLoading, isAuthLayout, setIsAuthLayout } = useLoading();
+
     useEffect(() => {
-        setIsLoading(true);
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1100);
+        if (isAuthLayout) {
+            setIsLoading(true);
+            const timer = setTimeout(() => {
+                setIsLoading(false);
+                setIsAuthLayout(false);
+            }, 1100);
 
-        return () => clearTimeout(timer);
-    }, []);
-
+            return () => clearTimeout(timer);
+        }
+    }, [isAuthLayout, setIsLoading, setIsAuthLayout]);
     return (
         <>
             {isLoading && <Spinner />}
-            <div className=' container-fluid'>
-                <div className="row">
-                    <div className="col-md-3 bg-info">
-                        <SideBar />
 
+            <div className={styles.container}>
+                <div className={styles.sidebar}>
+                    <SideBar />
+                </div>
+                <div className={styles.content}>
+                    <div className={styles.header}>
+                        <NavBar loginData={loginData} />
                     </div>
-                    <div className="col-md-9 bg-success">
-                        <NavBar />
-
+                    <div className={styles.body}>
                         <Outlet />
-
-
                     </div>
                 </div>
+
             </div>
         </>
-
-
-    )
+    );
 }

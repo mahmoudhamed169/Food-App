@@ -42,3 +42,61 @@ select {
     border: 1px solid green !important;
     box-shadow: 0 0 10px green !important;
 }
+
+.sidebar-container .ps-sidebar-container {
+    background-color: transparent !important;
+
+}
+
+.sidebar-container .ps-menu-button {
+    color: #fff !important;
+    transition: all 1s;
+}
+
+.sidebar-container .ps-menu-button:hover {
+    background: linear-gradient(135deg, #00924D 0%, #005F30 100%) !important;
+}
+
+.navbar-container .navbar {
+    height: 60px !important;
+}
+
+.navbar-container input {
+    border: 1px solid green !important;
+
+}
+
+.header-content {
+    background-image: url(./assets/images/heade-bg.png);
+    background-size: cover;
+}
+
+.headerImg {
+    -webkit-animation: mover 1s infinite alternate;
+    animation: mover 1s infinite alternate;
+}
+
+.headerImg {
+    -webkit-animation: mover 1s infinite alternate;
+    animation: mover 1s infinite alternate;
+}
+
+@-webkit-keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}

@@ -3,8 +3,11 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { useState } from 'react';
 
 export default function ForgetPass() {
+    const [loading, setLoading] = useState(false);
     const {
         register, //btsheel el values ui inputs
         handleSubmit, //integration
@@ -16,6 +19,7 @@ export default function ForgetPass() {
 
 
     const onSubmit = async (data) => {
+        setLoading(true);
         try {
             let response = await axios.post(
                 "https://upskilling-egypt.com:3006/api/v1/Users/Reset/Request",
@@ -30,6 +34,9 @@ export default function ForgetPass() {
 
             toast.error(error.response.data.message);
         }
+        finally {
+            setLoading(false);
+        }
     }
 
     return (
@@ -42,27 +49,32 @@ export default function ForgetPass() {
 
 
                 <form className='mt-4' onSubmit={handleSubmit(onSubmit)} >
-                    <div className="input-group mb-3">
-                        <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
-                        <input type="email" className="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1"
-                            {...register("email", {
-                                required: "email is required",
-                                pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: "email is not valid",
-                                },
-                            })}
-                        />
+                    <div className='mb-3'>
+                        <div className="input-group ">
+                            <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
+                            <input type="email" className="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1"
+                                {...register("email", {
+                                    required: "email is required",
+                                    pattern: {
+                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                        message: "email is not valid",
+                                    },
+                                })}
+                            />
 
+                        </div>
+                        {errors.email && (
+                            <span className="text-danger mb-3 ">{errors?.email?.message}</span>
+                        )}
                     </div>
-                    {errors.email && (
-                        <span className="text-danger mb-3 ">{errors?.email?.message}</span>
-                    )}
+
 
 
                     <div className="form-group mt-5 mb-4">
-                        <button
-                            className="btn btn-success w-100">Submit</button>
+                        <button className="btn btn-success w-100 " disabled={loading}>
+
+                            {loading ? <><span className='m-2'>Loading... </span><ClipLoader size={15} color={"#fff"} /></> : 'Submit'}
+                        </button>
                     </div>
 
                 </form>

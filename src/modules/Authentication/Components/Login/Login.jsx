@@ -1,45 +1,43 @@
-
 import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
 
-
-export default function Login() {
+export default function Login({ saveLoginData }) {
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     let navigate = useNavigate();
     const {
-        register, //btsheel el values ui inputs
-        handleSubmit, //integration
-        formState: { errors }, //errors
+        register,
+        handleSubmit,
+        formState: { errors },
     } = useForm();
-
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-
     const onSubmit = async (data) => {
+        setLoading(true);
         try {
             let response = await axios.post(
                 "https://upskilling-egypt.com:3006/api/v1/Users/Login",
                 data
             );
+            // console.log(response);
+            localStorage.setItem("token", response.data.token)
+            saveLoginData()
             toast.success("Login successful!");
-
-            navigate("/dashboard/home")
-
-
-
+            navigate("/dashboard/home");
         } catch (error) {
-
             toast.error(error.response.data.message);
+        } finally {
+            setLoading(false);
         }
-    }
-
-
+    };
 
     return (
         <>
@@ -50,59 +48,73 @@ export default function Login() {
                 </div>
 
                 <form className='mt-4' onSubmit={handleSubmit(onSubmit)} >
-                    <div className="input-group mb-3">
-                        <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
-                        <input type="email" className="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1"
-                            {...register("email", {
-                                required: "email is required",
-                                pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: "email is not valid",
-                                },
-                            })}
-                        />
+                    <div className='mb-3'>
+                        <div className="input-group ">
+                            <span className="input-group-text  border-0  " id="basic-addon1">
+                                <i className="fa-solid fa-envelope  h-75 pt-1"></i>
+                            </span>
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter your E-mail"
+                                aria-label="Email"
+                                aria-describedby="basic-addon1"
+                                {...register("email", {
+                                    required: "email is required",
+                                    pattern: {
+                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                        message: "email is not valid",
+                                    },
+                                })}
+                            />
+                        </div>
+                        {errors.email && (
+                            <span className="text-danger ">{errors?.email?.message}</span>
+                        )}
 
                     </div>
-                    {errors.email && (
-                        <span className="text-danger ">{errors?.email?.message}</span>
-                    )}
 
-                    <div className="input-group mb-3 mt-3">
-                        <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-lock  h-75 pt-1 "></i></span>
-                        <input type={showPassword ? "text" : "password"} className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"     {...register("password", {
-                            required: "password is required",
-                        })} />
-                        <span className="input-group-text  border-0 " onClick={togglePasswordVisibility} id="basic-addon1">
-                            <i className={`fa-regular ${showPassword ? 'fa-eye' : "fa-eye-slash"} border-0 p-0`}></i>
-                        </span>
+
+                    <div className='mb-3'>
+                        <div className="input-group  ">
+                            <span className="input-group-text  border-0  " id="basic-addon1">
+                                <i className="fa-solid fa-lock  h-75 pt-1 "></i>
+                            </span>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                className="form-control"
+                                placeholder="Password"
+                                aria-label="Password"
+                                aria-describedby="basic-addon1"
+                                {...register("password", {
+                                    required: "password is required",
+                                })}
+                            />
+                            <span className="input-group-text  border-0 " onClick={togglePasswordVisibility} id="basic-addon1">
+                                <i className={`fa-regular ${showPassword ? 'fa-eye' : "fa-eye-slash"} border-0 p-0`}></i>
+                            </span>
+                        </div>
+                        {errors.password && (
+                            <span className="text-danger">{errors?.password?.message}</span>
+                        )}
                     </div>
-                    {errors.password && (
-                        <span className="text-danger">{errors?.password?.message}</span>
-                    )}
 
                     <div className="d-flex justify-content-between align-items-center my-4">
-                        <Link
-                            to="/register"
-                            className="text-black text-decoration-none"
-                        >
+                        <Link to="/register" className="text-black text-decoration-none">
                             Register now?
                         </Link>
-                        <Link
-                            to="/forgetPass"
-                            className="text-success text-decoration-none"
-                        >
+                        <Link to="/forgetPass" className="text-success text-decoration-none">
                             Forgot password?
                         </Link>
                     </div>
 
                     <div className="form-group my-3 mb-4">
-                        <button
-                            className="btn btn-success w-100">Login</button>
+                        <button className="btn btn-success w-100" disabled={loading}>
+                            {loading ? <><span className='m-2'>Loading... </span><ClipLoader size={15} color={"#fff"} /></> : 'Login'}
+                        </button>
                     </div>
                 </form >
             </div >
         </>
-
-
-    )
+    );
 }

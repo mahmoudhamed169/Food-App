@@ -72,58 +72,64 @@ export default function Register() {
                 <div className="row g-3 ">
                     {/* userName */}
                     <div className="col-md-6">
-                        <div className="input-group mb-3">
-                            <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-user  h-75 pt-1"></i></span>
-                            <input type="text" className="form-control" placeholder="UserName" aria-label="Email" aria-describedby="basic-addon1"
-                                {...register("userName", {
-                                    required: "userName is required",
+                        <div className='mb-3'>
+                            <div className="input-group ">
+                                <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-user  h-75 pt-1"></i></span>
+                                <input type="text" className="form-control" placeholder="UserName" aria-label="Email" aria-describedby="basic-addon1"
+                                    {...register("userName", {
+                                        required: "userName is required",
 
-                                })}
-                            />
+                                    })}
+                                />
+                            </div>
+                            {errors.userName && (
+                                <span className="text-danger ">{errors?.userName?.message}</span>
+                            )}
                         </div>
-                        {errors.userName && (
-                            <span className="text-danger ">{errors?.userName?.message}</span>
-                        )}
                     </div>
 
                     {/* email */}
                     <div className="col-md-6">
-                        <div className="input-group mb-3">
-                            <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
-                            <input type="email" className="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1"
-                                {...register("email", {
-                                    required: "email is required",
-                                    pattern: {
-                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                        message: "email is not valid",
-                                    },
-                                })}
-                            />
+                        <div className='mb-3'>
+                            <div className="input-group ">
+                                <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
+                                <input type="email" className="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1"
+                                    {...register("email", {
+                                        required: "email is required",
+                                        pattern: {
+                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                            message: "email is not valid",
+                                        },
+                                    })}
+                                />
+                            </div>
+                            {errors.email && (
+                                <span className="text-danger ">{errors?.email?.message}</span>
+                            )}
                         </div>
-                        {errors.email && (
-                            <span className="text-danger ">{errors?.email?.message}</span>
-                        )}
                     </div>
                     {/* country */}
                     <div className="col-md-6">
-                        <div className="input-group mb-3">
-                            <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-house  h-75 pt-1"></i></span>
-                            <select className="form-control" id="countrySelect"
-                                {...register("country", {
-                                    required: "Country is required",
+                        <div className='mb-3'>
+                            <div className="input-group ">
+                                <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-house  h-75 pt-1"></i></span>
+                                <select className="form-control" id="countrySelect"
+                                    {...register("country", {
+                                        required: "Country is required",
 
-                                })}>
-                                <option value="">Select a country</option>
-                                {countries.map((country, index) => (
-                                    <option key={index} value={country}>
-                                        {country}
-                                    </option>
-                                ))}
-                            </select>
+                                    })}>
+                                    <option value="">Select a country</option>
+                                    {countries.map((country, index) => (
+                                        <option key={index} value={country}>
+                                            {country}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            {errors.country && (
+                                <span className="text-danger ">{errors?.country?.message}</span>
+                            )}
                         </div>
-                        {errors.country && (
-                            <span className="text-danger ">{errors?.country?.message}</span>
-                        )}
                     </div>
                     <div className="col-md-6">
                         <div className="input-group mb-3">
@@ -141,34 +147,38 @@ export default function Register() {
                     </div>
 
                     <div className="col-md-6">
-                        <div className="input-group mb-2 ">
-                            <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-lock  h-75 pt-1 "></i></span>
-                            <input type={showPassword ? "text" : "password"} className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"     {...register("password", {
-                                required: "password is required",
-                            })} />
-                            <span className="input-group-text  border-0 " onClick={togglePasswordVisibility} id="basic-addon1">
-                                <i className={`fa-regular ${showPassword ? 'fa-eye' : "fa-eye-slash"} border-0 p-0`}></i>
-                            </span>
+                        <div className='mb-2'>
+                            <div className="input-group  ">
+                                <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-lock  h-75 pt-1 "></i></span>
+                                <input type={showPassword ? "text" : "password"} className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"     {...register("password", {
+                                    required: "password is required",
+                                })} />
+                                <span className="input-group-text  border-0 " onClick={togglePasswordVisibility} id="basic-addon1">
+                                    <i className={`fa-regular ${showPassword ? 'fa-eye' : "fa-eye-slash"} border-0 p-0`}></i>
+                                </span>
+                            </div>
+                            {errors.password && (
+                                <span className="text-danger">{errors?.password?.message}</span>
+                            )}
                         </div>
-                        {errors.password && (
-                            <span className="text-danger">{errors?.password?.message}</span>
-                        )}
                     </div>
 
 
                     <div className="col-md-6">
-                        <div className="input-group mb-2">
-                            <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-lock  h-75 pt-1 "></i></span>
-                            <input type={ShowConfirmPassword ? "text" : "password"} className="form-control" placeholder="Confirm New Password" aria-label="Password" aria-describedby="basic-addon1"     {...register("confirmPassword", {
-                                required: "confirm Password is required",
-                            })} />
-                            <span className="input-group-text  border-0 " onClick={toggleConfirmPasswordVisibility} id="basic-addon1">
-                                <i className={`fa-regular ${ShowConfirmPassword ? 'fa-eye' : "fa-eye-slash"} border-0 p-0`}></i>
-                            </span>
+                        <div className='mb-2'>
+                            <div className="input-group ">
+                                <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-lock  h-75 pt-1 "></i></span>
+                                <input type={ShowConfirmPassword ? "text" : "password"} className="form-control" placeholder="Confirm New Password" aria-label="Password" aria-describedby="basic-addon1"     {...register("confirmPassword", {
+                                    required: "confirm Password is required",
+                                })} />
+                                <span className="input-group-text  border-0 " onClick={toggleConfirmPasswordVisibility} id="basic-addon1">
+                                    <i className={`fa-regular ${ShowConfirmPassword ? 'fa-eye' : "fa-eye-slash"} border-0 p-0`}></i>
+                                </span>
+                            </div>
+                            {errors.confirmPassword && (
+                                <span className="text-danger">{errors?.confirmPassword?.message}</span>
+                            )}
                         </div>
-                        {errors.confirmPassword && (
-                            <span className="text-danger">{errors?.confirmPassword?.message}</span>
-                        )}
                     </div>
 
 
