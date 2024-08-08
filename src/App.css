@@ -66,10 +66,17 @@ select {
 
 }
 
-.header-content {
-    background-image: url(./assets/images/heade-bg.png);
-    background-size: cover;
+.header-container {
+    /* background-image: url(./assets/images/heade-bg.png); */
+    background-color: #00924D;
+
+    .header-content {
+        background-image: url("/src/assets/images/header.svg");
+    }
+
+
 }
+
 
 .headerImg {
     -webkit-animation: mover 1s infinite alternate;

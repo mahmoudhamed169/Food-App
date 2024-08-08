@@ -23,9 +23,13 @@ export default function SideBar() {
     return (
         <div className="sidebar-container">
             <Sidebar className="vh-100 bg-transparent" collapsed={isCollapsed}>
-                <div>
-                    <img onClick={handleToggle} className="w-75" src={logo} alt="" />
-                </div>
+                <button onClick={handleToggle} style={{ border: "none", background: "none" }}>
+                    <img className="" src={logo} alt="" style={{
+                        width: isCollapsed ? "4rem" : "8rem",
+                        transition: "all 300ms"
+
+                    }} />
+                </button>
                 <Menu>
                     <MenuItem
                         icon={<i className="fa fa-home"></i>}

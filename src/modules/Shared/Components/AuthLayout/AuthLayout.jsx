@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import logo from "../../../../assets/images/4.png"
 import { useLoading } from './../../../../Context/LoadingContext';
 import Spinner from './../Spinner/Spinner';
 
+
 export default function AuthLayout() {
-    const { isLoading, setIsLoading, setIsAuthLayout } = useLoading()
+    const { isLoading, setIsLoading } = useLoading();
+    const navigate = useNavigate()
     const location = useLocation();
     const colClass = location.pathname === '/register' ? 'col-md-8' : 'col-md-6';
 
@@ -14,14 +16,19 @@ export default function AuthLayout() {
         setIsLoading(true);
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1100);
+        }, 3000);
 
         return () => clearTimeout(timer);
-    }, [location.pathname, setIsLoading]);
+    }, []);
+
 
     useEffect(() => {
-        setIsAuthLayout(true);
-    }, [setIsAuthLayout]);
+        if (localStorage.getItem("token")) {
+            navigate("/dashboard")
+        }
+    }, []);
+
+
 
     return (
         <div>
@@ -34,10 +41,7 @@ export default function AuthLayout() {
                                 <img src={logo} alt="logo" />
                             </div>
                             <Outlet />
-
                         </div>
-
-
                     </div>
 
                 </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { EmailValidation } from '../../../../Constants/VALIDATIONS.JS';
 
 
 export default function Register() {
@@ -98,15 +99,9 @@ export default function Register() {
                     <div className="col-md-6">
                         <div className='mb-3'>
                             <div className="input-group ">
-                                <span className="input-group-text  border-0  " id="basic-addon1"><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
+                                <span className="input-group-text  border-0 "><i className="fa-solid fa-envelope  h-75 pt-1"></i></span>
                                 <input type="email" className="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1"
-                                    {...register("email", {
-                                        required: "email is required",
-                                        pattern: {
-                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                            message: "email is not valid",
-                                        },
-                                    })}
+                                    {...register("email", EmailValidation)}
                                 />
                             </div>
                             {errors.email && (

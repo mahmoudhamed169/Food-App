@@ -6,10 +6,10 @@ export const useLoading = () => useContext(LoadingContext);
 
 export const LoadingProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isAuthLayout, setIsAuthLayout] = useState(true);
+
 
     return (
-        <LoadingContext.Provider value={{ isLoading, setIsLoading, isAuthLayout, setIsAuthLayout }}>
+        <LoadingContext.Provider value={{ isLoading, setIsLoading, }}>
             {children}
         </LoadingContext.Provider>
     );
