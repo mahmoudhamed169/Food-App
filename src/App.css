@@ -1,3 +1,9 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
 .Auth-container {
     background-image: url(assets/images/auth-bg.png);
     background-size: cover;
@@ -106,4 +112,48 @@ select {
     100% {
         transform: translateY(-10px);
     }
+}
+
+td {
+    padding: 25px 0px 15px !important;
+}
+
+.row-thead {
+    background-color: #E2E5EB !important;
+    padding: 25px 0px !important;
+    font-weight: 600;
+    font-size: 19px;
+
+}
+
+
+.even-row {
+
+    background-color: #FFFFFF !important;
+
+}
+
+.odd-row {
+    background-color: #F8F9FB !important;
+}
+
+.dropdown-item i {
+    color: #00924D;
+}
+
+.dropdown-item:hover,
+.dropdown-item i:hover {
+    background: linear-gradient(135deg, #00924D 0%, #005F30 100%) !important;
+    color: #ffff !important;
+}
+
+.btn-model i {
+    border: solid red 2px;
+    padding: 5px 7px;
+    border-radius: 50%;
+}
+
+.img-list {
+    width: 50px;
+    height: 50px;
 }

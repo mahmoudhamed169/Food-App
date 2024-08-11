@@ -8,10 +8,10 @@ export default function NavBar({ loginData }) {
         <div className="navbar-container  ">
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container">
-                    <Link className="navbar-brand " to="/dashboard/home"  >
+                    {/* <Link className="navbar-brand " to="/dashboard/home"  >
                         <img src={logo} className=' p-2' alt="" style={{ width: "100px" }} />
 
-                    </Link>
+                </Link> */}
 
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
