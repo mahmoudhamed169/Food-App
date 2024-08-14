@@ -19,7 +19,7 @@ export default function UsersList() {
     const [group, setGroup] = useState("");
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(""); // Corrected state name
-    const pageSize = 5;
+    const pageSize = 30;
 
     const fetchCountries = async () => {
         try {
@@ -136,11 +136,11 @@ export default function UsersList() {
                 ) : (
                     <>
                         <UserTable usersList={usersList} />
-                        {/* <PaginationComponent
+                        <PaginationComponent
                             currentPage={currentPage}
                             totalPages={totalPages}
                             onPageChange={handlePageChange}
-                        /> */}
+                        />
                     </>
                 )}
             </div>

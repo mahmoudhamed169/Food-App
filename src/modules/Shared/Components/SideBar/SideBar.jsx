@@ -4,13 +4,14 @@ import logo from "../../../../assets/images/3.png";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 
 
-export default function SideBar() {
+export default function SideBar({ toggleSidebar }) {
 
 
     const [isCollapsed, setIsCollapsed] = useState(false);
     const navigate = useNavigate();
     const handleToggle = () => {
         setIsCollapsed(!isCollapsed);
+        toggleSidebar()
     };
 
 
@@ -21,7 +22,7 @@ export default function SideBar() {
     };
 
     return (
-        <div className="sidebar-container">
+        <div className="sidebar-container ">
             <Sidebar className="vh-100 bg-transparent" collapsed={isCollapsed}>
                 <button onClick={handleToggle} style={{ border: "none", background: "none" }}>
                     <img className="" src={logo} alt="" style={{
