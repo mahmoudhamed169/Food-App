@@ -1,7 +1,9 @@
 
-import ModalConfirmDelete from '../ModalConfirmDelete'
 
-export default function UserTable({ usersList, deleteUser }) {
+
+export default function UserTable({ usersList }) {
+
+    // console.log({ usersList })
     return (
         <table className="table custom-table">
             <thead>
@@ -10,7 +12,7 @@ export default function UserTable({ usersList, deleteUser }) {
                     <th className='row-thead'>Email</th>
                     <th className='row-thead'>Country</th>
                     <th className='row-thead'>Mobile Phone</th>
-                    <th className='row-thead'>Creation Date</th>
+                    <th className='row-thead'>Type</th>
                     <th className='row-thead'>Actions</th>
                 </tr>
             </thead>
@@ -22,7 +24,7 @@ export default function UserTable({ usersList, deleteUser }) {
                         <td className={index % 2 === 0 ? 'even-row' : 'odd-row'}>{user.country}</td>
                         <td className={index % 2 === 0 ? 'even-row' : 'odd-row'}>{user.phoneNumber}</td>
                         <td className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                            {user.creationDate}
+                            {user.group.name}
                         </td>
                         <td className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
                             <div className="dropdown">
@@ -43,9 +45,7 @@ export default function UserTable({ usersList, deleteUser }) {
                                         </button>
                                     </li>
 
-                                    <li>
-                                        <ModalConfirmDelete deleteAction={() => { deleteUser(user.id) }} tag="User" />
-                                    </li>
+
                                 </ul>
                             </div>
                         </td>

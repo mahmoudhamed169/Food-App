@@ -42,11 +42,13 @@ select {
 
 }
 
+
+
+.form-select:focus,
 .form-control:focus {
-    outline: none !important;
-    outline: none !important;
-    border: 1px solid green !important;
-    box-shadow: 0 0 10px green !important;
+    border-color: #009247 !important;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(0, 146, 71, .25) !important;
 }
 
 .sidebar-container .ps-sidebar-container {
@@ -147,13 +149,64 @@ td {
     color: #ffff !important;
 }
 
-.btn-model i {
-    border: solid red 2px;
-    padding: 5px 7px;
-    border-radius: 50%;
+.btn-model {
+    border: solid #CC0000 1px !important;
+    width: 27px !important;
+    height: 29px !important;
+    color: #CC0000 !important;
+
+    border-radius: 50% !important;
 }
 
 .img-list {
     width: 50px;
     height: 50px;
+}
+
+.btn-addCategory {
+    background-color: #009247 !important;
+    border: #009247 !important;
+    width: 111.58px !important;
+    height: 43.71px !important;
+    border-radius: 8px 0px 0px 0px;
+
+
+}
+
+.btn-AddNewItem {
+    background-color: #009247 !important;
+    border: #009247 !important;
+    width: 224.58px !important;
+    height: 48.71px !important;
+    border-radius: 8px 0px 0px 0px;
+    color: #fff !important;
+
+}
+
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #009247;
+    border-color: #009247;
+    color: white;
+}
+
+.custom-pagination .page-link {
+    color: #009247;
+    border: 1px solid #009247;
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #006b33;
+    /* A darker shade of the main color */
+    color: white;
+}
+
+.custom-pagination .page-link:focus {
+    box-shadow: none;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    color: #cccccc;
+    background-color: #f8f9fa;
+    border-color: #cccccc;
 }

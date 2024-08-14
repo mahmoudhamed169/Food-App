@@ -1,0 +1,78 @@
+hr {
+    /* border: 3px solid #F7F7F7; */
+    height: 5px;
+    color: #938787;
+
+}
+
+.dropzone {
+    border: 2px dashed #009247;
+    background-color: #F1FFF0;
+
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.dropzone.active {
+    border-color: #007d3d;
+    background-color: #f0fff0;
+}
+
+.btn-cancel {
+    width: 170px;
+    height: 48px;
+    background-color: #fff;
+    color: #009247;
+
+    border-radius: 8px;
+    border: 1px solid #009247;
+    opacity: 0px;
+
+}
+
+.btn-save {
+    width: 103px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #009247;
+    background-color: #009247;
+    color: #fff;
+
+
+}
+
+.btn-Fill-Recipes {
+    width: 223px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #009247 !important;
+    background-color: #009247 !important;
+    color: #fff !important;
+    opacity: 0px;
+
+}
+
+/* 
+.notFound-container {
+    background-image: url("./assets/images//vector.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+
+}
+
+.btn-backHome {
+    width: 302.36px;
+    height: 60.68px;
+    border-radius: 8px;
+    opacity: 0px;
+    background: #009247;
+    border: 1px solid #009247;
+    color: #F1FFF0;
+
+
+} */

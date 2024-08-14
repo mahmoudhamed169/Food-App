@@ -19,7 +19,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className='btn btn-success px-5' onClick={() => { navigate("/dashboard/recipestList") }} >Fill Recipes <i className="fa-solid fa-arrow-right mx-2"></i></button>
+                    <button className='btn btn-success px-5 btn-Fill-Recipes' onClick={() => { navigate("/dashboard/recipestList") }} >Fill Recipes <i className="fa-solid fa-arrow-right mx-2"></i></button>
                 </div>
             </div>
         </div>

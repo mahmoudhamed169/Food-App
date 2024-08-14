@@ -15,6 +15,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { jwtDecode } from 'jwt-decode';
 import ProtectedRoute from './modules/Shared/Components/ProtectedRoute/ProtectedRoute';
+import RecipesData from './modules/Recipes/Components/RecipesData/RecipesData';
+import VerifyAcount from './modules/Authentication/Components/VerifyAcount/VerifyAcount';
+import NotFound from './modules/Shared/Components/NotFound/NotFound';
 
 const App = () => {
 
@@ -34,9 +37,12 @@ const App = () => {
         { index: true, element: <Login saveLoginData={saveLoginData} /> },
         { path: "login", element: <Login saveLoginData={saveLoginData} /> },
         { path: "register", element: <Register /> },
+        { path: "verifyAcount", element: <VerifyAcount /> },
         { path: "resetPass", element: <ResetPass /> },
         { path: "forgetPass", element: <ForgetPass /> }
-      ]
+      ],
+      errorElement: <NotFound />
+
     },
     {
       path: "dashboard",
@@ -47,9 +53,12 @@ const App = () => {
         { index: true, element: <Home /> },
         { path: "home", element: <Home /> },
         { path: "recipestList", element: <RecipesList /> },
+        { path: "recipestData", element: <RecipesData /> },
+
         { path: "categoriesList", element: <CategoriesList /> },
         { path: "users", element: <UsersList /> }
-      ]
+      ],
+      errorElement: <NotFound />
     }
   ]);
 

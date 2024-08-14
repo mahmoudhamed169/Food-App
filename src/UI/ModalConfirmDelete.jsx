@@ -17,9 +17,11 @@ function ModalConfirmDelete({ deleteAction, tag }) {
             </button>
 
             <Modal show={show} onHide={handleClose} >
-                <div className=' d-flex justify-content-end m-2'>
-                    <button className=' btn btn-model ' onClick={handleClose}>
-                        <i className='fa-solid fa-close fs-5 text-danger'></i>
+
+
+                <div className=' d-flex justify-content-end mx-4 mt-4 '>
+                    <button className=' btn btn-model d-flex justify-content-center align-items-center ' onClick={handleClose}>
+                        <i className='fa-solid fa-close  '></i>
                     </button>
                 </div>
                 <Modal.Body>

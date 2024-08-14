@@ -10,6 +10,7 @@ export const USERS_URLs = {
     delete: (id) => `${BASE_USERS}/${id}`,
     resetRequest: `${BASE_USERS}/Reset/Request`,
     reset: `${BASE_USERS}/Reset`,
+    verifyAcount: `${BASE_USERS}/verify`,
 
 }
 
@@ -18,6 +19,7 @@ export const USERS_URLs = {
 const BASE_CATEGORY = `${BASE_URL}/Category`;
 export const CATEGORIES_URLS = {
     getCategories: `${BASE_CATEGORY}`,
+    addNewCategory: `${BASE_CATEGORY}`,
     delete: (id) => `${BASE_CATEGORY}/${id}`,
 
 
@@ -27,7 +29,18 @@ export const CATEGORIES_URLS = {
 const BASE_RECIPES = `${BASE_URL}/Recipe`;
 export const RECIPES_URLS = {
     getRecipes: `${BASE_RECIPES}`,
+    addNewRecipe: `${BASE_RECIPES}`,
     delete: (id) => `${BASE_RECIPES}/${id}`,
+
+
+}
+
+
+
+// TAG URLS
+const BASE_TAGS = `${BASE_URL}/tag`;
+export const TAGS_URLS = {
+    getTags: `${BASE_TAGS}`,
 
 
 }

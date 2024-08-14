@@ -3,9 +3,9 @@ import ModalConfirmDelete from '../ModalConfirmDelete'
 
 export default function RecipeTable({ recipesList, deleteRecipe }) {
     return (
-        <table className="table custom-table">
+        <table className="table custom-table r ">
             <thead>
-                <tr className='text-center'>
+                <tr className='text-center '>
                     <th className='row-thead' >Item Name</th>
                     <th className='row-thead'>Image</th>
                     <th className='row-thead'>Price</th>
