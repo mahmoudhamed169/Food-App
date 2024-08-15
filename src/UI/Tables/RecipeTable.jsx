@@ -1,4 +1,5 @@
 import { BASEIMG_URL } from '../../Constants/END_POINTS.JS'
+import RecipesDetails from '../../modules/Recipes/Components/RecipesDetails/RecipesDetails'
 import ModalConfirmDelete from '../ModalConfirmDelete'
 
 export default function RecipeTable({ recipesList, deleteRecipe }) {
@@ -47,9 +48,7 @@ export default function RecipeTable({ recipesList, deleteRecipe }) {
                                 </button>
                                 <ul className="dropdown-menu" >
                                     <li>
-                                        <button className="dropdown-item">
-                                            <i className=" fa-regular fa-eye me-2" aria-hidden="true"></i> View
-                                        </button>
+                                        <RecipesDetails recipe={recipe} />
                                     </li>
                                     <li>
                                         <button className="dropdown-item">

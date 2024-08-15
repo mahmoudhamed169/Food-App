@@ -1,3 +1,4 @@
+import CategoryDetails from '../../modules/Categories/Components/CategoryDetails/CategoryDetails';
 import ModalConfirmDelete from '../ModalConfirmDelete'
 import { format } from 'date-fns';
 
@@ -39,9 +40,7 @@ export default function CategoryTable({ categoriesList, deleteCategory }) {
                                 </button>
                                 <ul className="dropdown-menu" >
                                     <li>
-                                        <button className="dropdown-item">
-                                            <i className=" fa-regular fa-eye me-2" aria-hidden="true"></i> View
-                                        </button>
+                                        <CategoryDetails category={category} />
                                     </li>
                                     <li>
                                         <button className="dropdown-item">

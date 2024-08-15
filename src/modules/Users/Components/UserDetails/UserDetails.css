@@ -1,5 +1,5 @@
-.user-image-section {
-    background-color: #f7f7f7;
+.image-section {
+    /* background-color: #f7f7f7; */
     border-radius: 10px;
     padding: 20px;
 
@@ -12,7 +12,7 @@
 
 
 
-.user-info-list li {
+.info-list li {
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
     font-size: 1rem;

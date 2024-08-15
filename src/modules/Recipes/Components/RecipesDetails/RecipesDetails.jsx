@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import './UserDetails.css';
 import { BASEIMG_URL } from '../../../../Constants/END_POINTS.JS';
-import imgAvatar from "../../../../assets/images/boy.png"
+import recipeImg from "../../../../assets/images/recipe.png"
 
-
-const UserDetails = (props) => {
+const RecipesDetails = (props) => {
     const [modalShow, setModalShow] = useState(false);
+    const { name, description, price, tag, creationDate, category, imagePath } = props.recipe;
 
-    const { userName, email, country, creationDate, group, phoneNumber, imagePath } = props.user;
-
+    // console.log(props.recipe);
     return (
+
         <>
             <button className="dropdown-item" onClick={() => setModalShow(true)}>
                 <i className="fa-regular fa-eye me-2" aria-hidden="true"></i> View
@@ -31,32 +30,36 @@ const UserDetails = (props) => {
                 <Modal.Body >
                     <div className=" container">
                         <div className="row g-6">
-                            <div className="col-md-5 image-section d-flex justify-content-center align-items-center">
+                            < div className="col-md-5 image-section d-flex justify-content-center align-items-center">
                                 <div className="img-container">
+
                                     {imagePath ? (
                                         <img
                                             src={`${BASEIMG_URL}/${imagePath}`}
-                                            alt="User"
+                                            alt="recipeImg"
                                             className="img-fluid rounded-circle shadow-sm"
                                         />
                                     ) : (
                                         <img
-                                            src={imgAvatar}
-                                            alt="User"
-                                            className="w-100 rounded-circle shadow-sm"
+                                            src={recipeImg}
+                                            alt="recipeImg"
+                                            className="w-100 rounded-circle  shadow-sm"
                                         />
                                     )}
+
                                 </div>
+
                             </div>
                             <div className="col-md-7 ps-3">
 
                                 <ul className="list-unstyled info-list">
-                                    <li><strong>Name:</strong> {userName}</li>
-                                    <li><strong>Email:</strong> {email}</li>
-                                    <li><strong>Phone Number:</strong> {phoneNumber}</li>
-                                    <li><strong>Country:</strong> {country}</li>
-                                    <li><strong>Role:</strong> {group.name}</li>
-                                    <li><strong>Joined On:</strong> {new Date(creationDate).toLocaleDateString()}</li>
+
+                                    <li><strong>Name:</strong> {name}</li>
+                                    <li><strong>Description:</strong> {description}</li>
+                                    <li><strong>Price:</strong> {price}</li>
+                                    <li><strong>Tag:</strong> {tag.name}</li>
+                                    <li><strong>Category:</strong> {category.map(cat => cat.name).join(', ')}</li>
+                                    <li><strong>Creation Date:</strong> {new Date(creationDate).toLocaleDateString()}</li>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +70,9 @@ const UserDetails = (props) => {
                 </Modal.Footer>
             </Modal>
         </>
+
+
     );
 }
 
-export default UserDetails;
+export default RecipesDetails;
