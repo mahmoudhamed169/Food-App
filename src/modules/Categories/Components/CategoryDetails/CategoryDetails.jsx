@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import recipeImg from "../../../../assets/images/recipe.png"
+import recipeImg from "../../../../assets/images/caregory.jpg"
 
 const CategoryDetails = (props) => {
     const [modalShow, setModalShow] = useState(false);
