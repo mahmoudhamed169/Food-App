@@ -18,24 +18,19 @@ import ProtectedRoute from './modules/Shared/Components/ProtectedRoute/Protected
 import RecipesData from './modules/Recipes/Components/RecipesData/RecipesData';
 import VerifyAcount from './modules/Authentication/Components/VerifyAcount/VerifyAcount';
 import NotFound from './modules/Shared/Components/NotFound/NotFound';
+import { LoadingProvider } from './Context/LoadingContext';
 
 const App = () => {
 
-  const [loginData, setLoginData] = useState(null);
-
-  const saveLoginData = () => {
-    let encodedToken = localStorage.getItem("token");
-    let decodedToken = jwtDecode(encodedToken);
-    // console.log(decodedToken);
-    setLoginData(decodedToken);
-  };
   const routes = createBrowserRouter([
     {
       path: "",
-      element: <AuthLayout />,
+      element: <LoadingProvider>
+        <AuthLayout />
+      </LoadingProvider>,
       children: [
-        { index: true, element: <Login saveLoginData={saveLoginData} /> },
-        { path: "login", element: <Login saveLoginData={saveLoginData} /> },
+        { index: true, element: <Login /> },
+        { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "verifyAcount", element: <VerifyAcount /> },
         { path: "resetPass", element: <ResetPass /> },
@@ -46,8 +41,8 @@ const App = () => {
     },
     {
       path: "dashboard",
-      element: <ProtectedRoute loginData={loginData} >
-        <MasterLayout loginData={loginData} />
+      element: <ProtectedRoute  >
+        <MasterLayout />
       </ProtectedRoute>,
       children: [
         { index: true, element: <Home /> },

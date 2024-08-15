@@ -6,12 +6,17 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './index.css'
 import { LoadingProvider } from './Context/LoadingContext.jsx';
+import { AuthContextProvider } from './Context/AuthContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LoadingProvider>
+    {/* <LoadingProvider>
       <App />
-    </LoadingProvider>
+    </LoadingProvider> */}
+    <AuthContextProvider>
+
+      <App />
+    </AuthContextProvider>
 
   </React.StrictMode>,
 )

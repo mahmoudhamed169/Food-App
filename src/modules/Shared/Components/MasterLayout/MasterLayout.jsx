@@ -2,9 +2,11 @@ import SideBar from "./../SideBar/SideBar";
 import { Outlet } from "react-router-dom";
 import styles from './MasterLayout.module.css';
 import NavBar from "../NavBar/NavBar";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../../Context/AuthContext";
 
-export default function MasterLayout({ loginData }) {
+export default function MasterLayout() {
+    const { loginData } = useContext(AuthContext)
     const [collapsed, setCollapsed] = useState(false);
 
     const toggleSidebar = () => {

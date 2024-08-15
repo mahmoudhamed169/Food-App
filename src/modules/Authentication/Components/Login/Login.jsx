@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,10 +9,12 @@ import { USERS_URLs } from '../../../../Constants/END_POINTS.JS';
 import PasswordInput from '../../../../UI/PasswordInput';
 import { LoginPasswordValidation } from '../../../../Constants/VALIDATIONS.JS';
 import EmailInput from '../../../../UI/EmailInput';
+import { AuthContext } from '../../../../Context/AuthContext';
 
 
 
-export default function Login({ saveLoginData }) {
+export default function Login() {
+    const { saveLoginData } = useContext(AuthContext)
 
 
 
@@ -29,11 +31,12 @@ export default function Login({ saveLoginData }) {
     useEffect(() => {
         // inputEl.current.focus()
         setFocus("email")
-    }, []);
+    });
 
 
 
     const onSubmit = async (data) => {
+        console.log(data);
 
         try {
             let response = await axios.post(
