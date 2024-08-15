@@ -1,7 +1,9 @@
 
 
 
+
 export default function Header({ image, title, paragraph }) {
+
     return (
 
         <div className="header-container text-white rounded-3  ">

@@ -2,12 +2,15 @@
 import Header from '../../../Shared/Components/Header/Header'
 import homeImg from "../../../../assets/images/home.png"
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../../Context/AuthContext'
 
 export default function Home() {
     const navigate = useNavigate()
+    const { loginData } = useContext(AuthContext)
     return (
         <div className='mx-3'>
-            <Header image={homeImg} title={"Welcome  Upskilling !"} paragraph={"This is a welcoming screen for the entry of the application , you can now see the options"} />
+            <Header image={homeImg} title={`Welcome  ${loginData.userName} !`} paragraph={"This is a welcoming screen for the entry of the application , you can now see the options"} />
             <div className='d-flex justify-content-between my-4 align-items-center p-5 rounded-5' style={{ background: "#F0FFEF" }}>
                 <div>
                     <h2 className='m-1 fw-bold'>
