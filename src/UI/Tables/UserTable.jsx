@@ -1,3 +1,4 @@
+import UserDetails from "../../modules/Users/Components/UserDetails/UserDetails";
 
 
 
@@ -41,7 +42,7 @@ export default function UserTable({ usersList }) {
                                 <ul className="dropdown-menu" >
                                     <li>
                                         <button className="dropdown-item">
-                                            <i className=" fa-regular fa-eye me-2" aria-hidden="true"></i> View
+                                            <UserDetails user={user} />
                                         </button>
                                     </li>
 

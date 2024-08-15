@@ -1,0 +1,19 @@
+.user-image-section {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+.img-container img {
+    max-width: 150px;
+    border: 5px solid white;
+}
+
+
+
+.user-info-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
