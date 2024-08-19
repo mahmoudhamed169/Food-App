@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import { BASEIMG_URL } from '../../Constants/END_POINTS.JS'
 import RecipesDetails from '../../modules/Recipes/Components/RecipesDetails/RecipesDetails'
 import ModalConfirmDelete from '../ModalConfirmDelete'
 
 export default function RecipeTable({ recipesList, deleteRecipe }) {
+    const navigate = useNavigate()
+
+    const handleUpdateRecipe = (recipe) => {
+        navigate("/dashboard/recipestData", { state: { operationType: "update", recipe } });
+    }
     return (
         <table className="table custom-table r ">
             <thead>
@@ -51,7 +57,7 @@ export default function RecipeTable({ recipesList, deleteRecipe }) {
                                         <RecipesDetails recipe={recipe} />
                                     </li>
                                     <li>
-                                        <button className="dropdown-item">
+                                        <button className="dropdown-item" onClick={() => { handleUpdateRecipe(recipe) }} >
                                             <i className="fa fa-edit me-2" aria-hidden="true"></i> Edit
                                         </button>
                                     </li>

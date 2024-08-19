@@ -1,8 +1,16 @@
+
 import CategoryDetails from '../../modules/Categories/Components/CategoryDetails/CategoryDetails';
+import UpdateCategory from '../../modules/Categories/Components/UpdateCategory/UpdateCategory';
 import ModalConfirmDelete from '../ModalConfirmDelete'
 import { format } from 'date-fns';
 
-export default function CategoryTable({ categoriesList, deleteCategory }) {
+export default function CategoryTable({ categoriesList, deleteCategory, getAllCategories }) {
+
+
+    // const [modalShow, setModalShow] = useState(false);
+
+
+
     const formatDateTime = (dateString) => {
         const date = new Date(dateString);
         return format(date, 'MM/dd/yyyy HH:mm');
@@ -43,9 +51,8 @@ export default function CategoryTable({ categoriesList, deleteCategory }) {
                                         <CategoryDetails category={category} />
                                     </li>
                                     <li>
-                                        <button className="dropdown-item">
-                                            <i className="fa fa-edit me-2" aria-hidden="true"></i> Edit
-                                        </button>
+                                        <UpdateCategory category={category} getAllCategories={getAllCategories} />
+
                                     </li>
                                     <li>
                                         <ModalConfirmDelete deleteAction={() => { deleteCategory(category.id) }} tag="Category" />

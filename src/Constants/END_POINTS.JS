@@ -21,6 +21,7 @@ export const CATEGORIES_URLS = {
     getCategories: `${BASE_CATEGORY}`,
     addNewCategory: `${BASE_CATEGORY}`,
     delete: (id) => `${BASE_CATEGORY}/${id}`,
+    updateCategory: (id) => `${BASE_CATEGORY}/${id}`,
 
 
 }
@@ -31,6 +32,7 @@ export const RECIPES_URLS = {
     getRecipes: `${BASE_RECIPES}`,
     addNewRecipe: `${BASE_RECIPES}`,
     delete: (id) => `${BASE_RECIPES}/${id}`,
+    updateRecipe: (id) => `${BASE_RECIPES}/${id}`
 
 
 }

@@ -109,7 +109,7 @@ export default function CategoriesList() {
                     <div className="text-center"><NoData /></div>
                 ) : (
                     <>
-                        <CategoryTable categoriesList={categoriesList} deleteCategory={deleteCategory} />
+                        <CategoryTable categoriesList={categoriesList} deleteCategory={deleteCategory} getAllCategories={getAllCategories} />
                         <PaginationComponent
                             currentPage={currentPage}
                             totalPages={totalPages}
