@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../../../assets/images/3.png";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import ChangePassword from "../../../Authentication/Components/ChangePassword/ChangePassword";
 
 
 export default function SideBar({ toggleSidebar }) {
 
 
     const [isCollapsed, setIsCollapsed] = useState(false);
+    // const [modalShow, setModalShow] = useState(false);
     const navigate = useNavigate();
     const handleToggle = () => {
         setIsCollapsed(!isCollapsed);
@@ -56,12 +58,14 @@ export default function SideBar({ toggleSidebar }) {
                     >
                         Categories
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         icon={<i className="fa-solid fa-unlock"></i>}
 
                     >
                         Change Password
-                    </MenuItem>
+                    </MenuItem> */}
+                    <ChangePassword />
+
 
                     <MenuItem
                         icon={<i className="fa-solid fa-right-from-bracket"></i>}

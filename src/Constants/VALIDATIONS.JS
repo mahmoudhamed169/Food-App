@@ -9,7 +9,9 @@ export const EmailValidation = {
 export const LoginPasswordValidation = {
     required: "password is required",
 }
-
+export const oldPasswordValidation = {
+    required: "Old password is required",
+}
 export const PasswordValidation = {
     required: "Password is required",
     pattern: {
@@ -21,4 +23,19 @@ export const PasswordValidation = {
 export const ConfirmPasswordValidation = (watch) => ({
     required: "Confirm password is required",
     validate: value => value === watch('password') || 'Passwords do not match',
+});
+
+export const NewPasswordValidation = {
+    required: "Password is required",
+    pattern: {
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        message: 'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character',
+    },
+};
+
+
+
+export const ConfirmNewPasswordValidation = (watch) => ({
+    required: "Confirm password is required",
+    validate: value => value === watch('newPassword') || 'Passwords do not match',
 });

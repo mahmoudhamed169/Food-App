@@ -20,7 +20,7 @@ export default function ResetPass() {
         handleSubmit, //integration
         formState: { errors, isSubmitting }, //errors
         setFocus,
-        getValues,
+
         watch
     } = useForm();
 

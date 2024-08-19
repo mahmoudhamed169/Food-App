@@ -11,6 +11,7 @@ export const USERS_URLs = {
     resetRequest: `${BASE_USERS}/Reset/Request`,
     reset: `${BASE_USERS}/Reset`,
     verifyAcount: `${BASE_USERS}/verify`,
+    changePassword: `${BASE_USERS}/ChangePassword`
 
 }
 
