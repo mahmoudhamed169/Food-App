@@ -1,0 +1,25 @@
+.imageWrapper {
+    position: relative;
+}
+
+.favoriteBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white !important;
+    color: #009247 !important;
+    border: 2px solid #1F263E !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favoriteBtn:hover {
+    background: #1F263E !important;
+    border: 2px solid white;
+    color: white !important;
+
+}

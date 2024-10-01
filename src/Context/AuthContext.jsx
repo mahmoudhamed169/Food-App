@@ -12,8 +12,9 @@ export const AuthContextProvider = ({ children }) => {
     const saveLoginData = () => {
         let encodedToken = localStorage.getItem("token");
         let decodedToken = jwtDecode(encodedToken);
-        // console.log(decodedToken);
+
         setLoginData(decodedToken);
+
     };
 
 

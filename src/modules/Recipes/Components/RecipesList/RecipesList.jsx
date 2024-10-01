@@ -12,7 +12,7 @@ import PaginationComponent from '../../../Shared/Components/Pagination/Paginatio
 import { FormControl, InputGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { TAGS_URLS } from '../../../../Constants/END_POINTS.JS';
-import { CATEGORIES_URLS } from '../../../../Constants/END_POINTS.JS';
+import { CATEGORIES_URLS, FAVORITES_URLS } from '../../../../Constants/END_POINTS.JS';
 
 export default function RecipesList() {
     const [recipesList, setRecipesList] = useState([]);
@@ -91,6 +91,19 @@ export default function RecipesList() {
             toast.error("Failed to delete Recipe. Please try again.");
         }
     };
+
+    const addToFav = async (id) => {
+        try {
+            await axios.post(FAVORITES_URLS.addToFavorites, { recipeId: id }, {
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+            });
+            toast.success("Recipe added successfully!");
+        } catch (error) {
+            console.error("Error adding Recipe to favorites:", error);
+            toast.error("Failed to add Recipe to favorites. Please try again.");
+        }
+    };
+
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -177,7 +190,7 @@ export default function RecipesList() {
                     <div className="text-center"><NoData /></div>
                 ) : (
                     <>
-                        <RecipeTable recipesList={recipesList} deleteRecipe={deleteRecipe} />
+                        <RecipeTable recipesList={recipesList} deleteRecipe={deleteRecipe} addToFav={addToFav} />
                         <PaginationComponent
                             currentPage={currentPage}
                             totalPages={totalPages}

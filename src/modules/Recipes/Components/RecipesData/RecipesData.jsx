@@ -16,6 +16,7 @@ const RecipesData = () => {
 
     const location = useLocation();
     const { operationType, recipe } = location.state || {};
+    console.log(recipe)
 
     const {
         register,
@@ -65,11 +66,11 @@ const RecipesData = () => {
     useEffect(() => {
         if (operationType === "update" && recipe) {
             // fill inputs with recipe data
-            setValue('name', recipe.name);
+            ('name', recipe.name);
             setValue('price', recipe.price);
             setValue('description', recipe.description);
-            setValue('tagId', recipe.tagId);
-            setValue('categoriesIds', recipe.categoriesIds);
+            setValue('tagId', recipe.tag.id);
+            setValue('categoriesIds', recipe.category[0].id);
             setUploadedFileName(recipe.imageName);
 
             setIsUpdating(true);

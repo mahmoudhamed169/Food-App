@@ -2,9 +2,16 @@ import { useNavigate } from 'react-router-dom'
 import { BASEIMG_URL } from '../../Constants/END_POINTS.JS'
 import RecipesDetails from '../../modules/Recipes/Components/RecipesDetails/RecipesDetails'
 import ModalConfirmDelete from '../ModalConfirmDelete'
+import { useContext } from 'react'
+import { AuthContext } from '../../Context/AuthContext'
 
-export default function RecipeTable({ recipesList, deleteRecipe }) {
+export default function RecipeTable({ recipesList, deleteRecipe, addToFav }) {
+
     const navigate = useNavigate()
+    const { loginData } = useContext(AuthContext)
+    const { roles } = loginData;
+    const person = roles[0]
+    console.log(person);
 
     const handleUpdateRecipe = (recipe) => {
         navigate("/dashboard/recipestData", { state: { operationType: "update", recipe } });
@@ -56,14 +63,23 @@ export default function RecipeTable({ recipesList, deleteRecipe }) {
                                     <li>
                                         <RecipesDetails recipe={recipe} />
                                     </li>
-                                    <li>
-                                        <button className="dropdown-item" onClick={() => { handleUpdateRecipe(recipe) }} >
-                                            <i className="fa fa-edit me-2" aria-hidden="true"></i> Edit
+                                    {person == "Admin" ? (
+                                        <>
+                                            <li>
+                                                <button className="dropdown-item" onClick={() => { handleUpdateRecipe(recipe) }} >
+                                                    <i className="fa fa-edit me-2" aria-hidden="true"></i> Edit
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <ModalConfirmDelete deleteAction={() => { deleteRecipe(recipe.id) }} tag="Recipe" />
+                                            </li>
+                                        </>
+                                    ) : (<li>
+                                        <button className="dropdown-item" onClick={() => { addToFav(recipe.id) }} >
+                                            <i className="fa fa-heart me-2" aria-hidden="true"></i> Add To Favorite
                                         </button>
-                                    </li>
-                                    <li>
-                                        <ModalConfirmDelete deleteAction={() => { deleteRecipe(recipe.id) }} tag="Recipe" />
-                                    </li>
+                                    </li>)}
+
                                 </ul>
                             </div>
                         </td>

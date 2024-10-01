@@ -37,6 +37,15 @@ export const RECIPES_URLS = {
 
 
 }
+// RECIPES URLS
+const BASE_FAVORITES = `${BASE_URL}/userRecipe`;
+export const FAVORITES_URLS = {
+    getFavorites: `${BASE_FAVORITES}`,
+    addToFavorites: `${BASE_FAVORITES}`,
+    deleteFavorites: (id) => `${BASE_FAVORITES}/${id}`,
+
+
+}
 
 
 

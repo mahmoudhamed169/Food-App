@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../../../assets/images/3.png";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import ChangePassword from "../../../Authentication/Components/ChangePassword/ChangePassword";
+import { AuthContext } from "../../../../Context/AuthContext";
 
 
 export default function SideBar({ toggleSidebar }) {
+    const { loginData } = useContext(AuthContext)
+    console.log(loginData);
+    const { roles } = loginData;
+    const person = roles[0]
+    console.log(person);
 
 
     const [isCollapsed, setIsCollapsed] = useState(false);
-    // const [modalShow, setModalShow] = useState(false);
+
     const navigate = useNavigate();
     const handleToggle = () => {
         setIsCollapsed(!isCollapsed);
@@ -40,32 +46,36 @@ export default function SideBar({ toggleSidebar }) {
                     >
                         Home
                     </MenuItem>
-                    <MenuItem
-                        icon={<i className="fa fa-users"></i>}
-                        component={<Link to="/dashboard/users" />}
-                    >
-                        Users
-                    </MenuItem>
+
+
                     <MenuItem
                         icon={<i className="fa-solid fa-utensils"></i>}
                         component={<Link to="/dashboard/recipestList" />}
                     >
                         Recipes
                     </MenuItem>
-                    <MenuItem
-                        icon={<i className="fa-regular fa-calendar-days"></i>}
-                        component={<Link to="/dashboard/categoriesList" />}
-                    >
-                        Categories
-                    </MenuItem>
-                    {/* <MenuItem
-                        icon={<i className="fa-solid fa-unlock"></i>}
 
+                    {person == "Admin" ? (<>
+                        <MenuItem
+                            icon={<i className="fa fa-users"></i>}
+                            component={<Link to="/dashboard/users" />}
+                        >
+                            Users
+                        </MenuItem>
+                        <MenuItem
+                            icon={<i className="fa-regular fa-calendar-days"></i>}
+                            component={<Link to="/dashboard/categoriesList" />}
+                        >
+                            Categories
+                        </MenuItem>
+                    </>) : (<MenuItem
+                        icon={<i className=" fa-regular fa-heart"></i>}
+                        component={<Link to="/dashboard/myFavorite" />}
                     >
-                        Change Password
-                    </MenuItem> */}
+                        Favorites
+                    </MenuItem>)}
+
                     <ChangePassword />
-
 
                     <MenuItem
                         icon={<i className="fa-solid fa-right-from-bracket"></i>}

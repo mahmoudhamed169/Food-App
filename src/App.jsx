@@ -13,12 +13,13 @@ import CategoriesList from './modules/Categories/Components/CategoriesList/Categ
 import UsersList from './modules/Users/Components/UsersList/UsersList';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { jwtDecode } from 'jwt-decode';
+
 import ProtectedRoute from './modules/Shared/Components/ProtectedRoute/ProtectedRoute';
 import RecipesData from './modules/Recipes/Components/RecipesData/RecipesData';
 import VerifyAcount from './modules/Authentication/Components/VerifyAcount/VerifyAcount';
 import NotFound from './modules/Shared/Components/NotFound/NotFound';
 import { LoadingProvider } from './Context/LoadingContext';
+import Favorites from './modules/Favorites/Favorites';
 
 const App = () => {
 
@@ -49,7 +50,7 @@ const App = () => {
         { path: "home", element: <Home /> },
         { path: "recipestList", element: <RecipesList /> },
         { path: "recipestData", element: <RecipesData /> },
-
+        { path: "myFavorite", element: <Favorites /> },
         { path: "categoriesList", element: <CategoriesList /> },
         { path: "users", element: <UsersList /> }
       ],
@@ -60,7 +61,6 @@ const App = () => {
   return (
     <>
       <RouterProvider router={routes} />
-
       <ToastContainer />
     </>
   );
