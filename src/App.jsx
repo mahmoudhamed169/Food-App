@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import AuthLayout from './modules/Shared/Components/AuthLayout/AuthLayout';
 import Login from './modules/Authentication/Components/Login/Login';
@@ -23,7 +23,7 @@ import Favorites from './modules/Favorites/Favorites';
 
 const App = () => {
 
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
     {
       path: "",
       element: <LoadingProvider>
